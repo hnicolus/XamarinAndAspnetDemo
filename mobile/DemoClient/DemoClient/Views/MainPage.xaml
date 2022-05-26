@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:DemoClient.ViewModels" xmlns:models="clr-namespace:DemoClient.Models"
+             x:Class="DemoClient.MainPage"
+             x:DataType="viewmodels:UsersViewModel">
+    <StackLayout>
+
+        <ListView x:Name="listView" HasUnevenRows="True"
+                  IsPullToRefreshEnabled="True" Refreshing="listView_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:DataType="models:User">
+                        	<StackLayout Orientation="Horizontal" HorizontalOptions="Fill" >
+							<StackLayout Orientation="Vertical">
+								<Label   >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="First Name :"/>
+                                            <Span Text="{Binding FirstName}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                		<Label   >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="LastName :"/>
+                                            <Span Text="{Binding LastName}" />
+                                        </FormattedString>
+
+                                    </Label.FormattedText>
+
+                                </Label>
+							</StackLayout>
+						</StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
+
