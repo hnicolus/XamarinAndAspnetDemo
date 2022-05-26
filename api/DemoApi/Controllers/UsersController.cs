@@ -9,7 +9,7 @@ namespace DemoApi.Controllers
     public class UsersController : ControllerBase
     {
         private readonly AppDbContext dbContext;
-        private readonly string[] names = { "John", "Nick", "Linda", "Ghost", "KG", "Me" };
+    
         public UsersController(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
