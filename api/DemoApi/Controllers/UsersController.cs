@@ -6,19 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 namespace DemoApi.Controllers
 {
     [Route("users")]
+    [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly AppDbContext dbContext;
-    
+
         public UsersController(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
         [HttpGet("{id}")]
-        public ActionResult<User> GetUser(string id)
+        public ActionResult<UserDto> GetUser(string id)
         {
             User? user = dbContext.Users.FirstOrDefault(x => x.Id == Guid.Parse(id));
-            return user != null ? (ActionResult<User>)user : (ActionResult<User>)NotFound();
+            return user == null ? (ActionResult<UserDto>)NotFound() : (ActionResult<UserDto>)Ok(user);
         }
 
         [HttpPost("create")]
